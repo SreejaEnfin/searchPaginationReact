@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import data from "./data.json"; // Assuming you have JSON data with a structure similar to your previous messages
+import data from "./data.json";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
