@@ -13,3 +13,13 @@
   padding: 10px 10px;
   margin: 10px;
 }
+
+.paginationButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.w3-container{
+
+}

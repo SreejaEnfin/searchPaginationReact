@@ -5,7 +5,9 @@ import {
   useReactTable,
   getCoreRowModel,
   flexRender,
+  getPaginationRowModel,
 } from "@tanstack/react-table";
+import { tab } from "@testing-library/user-event/dist/tab";
 
 function App() {
   // using tanstack
@@ -42,11 +44,12 @@ function App() {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
-    <div>
-      <table>
+    <div className="w3-container">
+      <table className="w3-table w3-striped">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -75,6 +78,24 @@ function App() {
           ))}
         </tbody>
       </table>
+      <div className="paginationButtons">
+        <button onClick={() => table.setPageIndex(0)}>First Page</button>
+        <button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage}
+        >
+          Next
+        </button>
+        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)}>
+          Last Page
+        </button>
+      </div>
     </div>
   );
 }
